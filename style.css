@@ -352,7 +352,7 @@ section {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  height: auto;
+  height: 350px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   group: project-card;
 }
@@ -506,3 +506,4 @@ section {
     font-size: 14px !important;
   }
 }
+
