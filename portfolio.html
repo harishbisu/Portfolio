@@ -1,1565 +1,296 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio: Harish Kumar(inprogress)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        font-family: 'Roboto', sans-serif;
-      }
-      .container {
-        display: flex;
-      }
-      .leftbar {
-        width: 250px;
-        background-color: #333;
-        color: #fff;
-        height: 100vh;
-        position: fixed;
-        overflow: auto;
-        transition: transform 0.3s ease-in-out;
-        z-index: 1001;
-      }
-      .leftbar .profile {
-        padding: 20px;
-        text-align: center;
-        border-bottom: 2px solid;
-      }
-      .leftbar .profile img {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        border: 2px solid;
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
-      }
-      .leftbar .profile img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 10px #575757;
-      }
-      .leftbar a {
-        display: block;
-        color: #fff;
-        padding: 15px;
-        text-decoration: none;
-        border-left: 3px solid transparent;
-      }
-      .leftbar a.active {
-        border-left: 3px solid #ffd1dd;
-      }
-      .leftbar .tab:hover {
-        background-color: #575757;
-      }
-      .content {
-        margin-left: 250px;
-        padding: 20px;
-        width: calc(100% - 250px);
-        transition: margin-left 0.3s ease-in-out;
-      }
-      .section {
-        padding: 50px 0;
-        border-bottom: 1px solid #ccc;
-      }
-      .hamburger {
-        display: none;
-        cursor: pointer;
-        padding: 15px;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        z-index: 1002;
-        transition: left 0.3s ease-in-out;
-      }
-      .hamburger div {
-        width: 30px;
-        height: 4px;
-        background-color: #333;
-        margin: 5px 0;
-        transition: all 0.3s ease;
-      }
-      .hamburger.active div:nth-child(1) {
-        transform: rotate(45deg) translate(0px, 12.2px);
-      }
-      .hamburger.active div:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(0px, -12.2px);
-      }
-      .laptop-container {
-        min-height: 300px;
-        position: relative;
-        text-align: center;
-        color: rgb(0, 0, 0);
-      }
 
-      .laptop-container img {
-        width: 50%;
-        max-width: 500px;
-        height: auto;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harish Kumar | Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-      .laptop-content {
-        position: absolute;
-        top: 18%;
-        left: 50%;
-        transform: translate(-50%, 5%);
-        width: 100%;
-        border-radius: 10px;
-      }
+</head>
 
-      .laptop-content h1,
-      h2 {
-        margin: 0;
-      }
+<body>
 
-      .laptop-content h1 {
-        font-size: 2em;
-      }
-
-      .laptop-content h2 {
-        font-size: 1.5em;
-      }
-
-      @media (max-width: 1200px) {
-        .laptop-container img {
-          width: 100%;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .laptop-content h1 {
-          font-size: 1.5em;
-        }
-        .laptop-content h2 {
-          font-size: 1em;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .leftbar {
-          width: 250px;
-          transform: translateX(-251px);
-        }
-        .leftbar.active {
-          transform: translateX(0);
-        }
-        .content {
-          margin-left: 0;
-          width: 100%;
-        }
-        .hamburger {
-          display: block;
-          width: 100%;
-          background: white;
-          top: auto;
-        }
-        .hamburger.active {
-          left: 250px;
-        }
-        .hamburger-container {
-          display: block;
-          width: 100%;
-          background: white;
-          top: auto;
-        }
-      }
-      #subText {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-      }
-      .cursor {
-        display: inline-block;
-        width: 4px;
-        height: 30px;
-        margin-bottom: -5px;
-        background-color: #333;
-        animation: blink 0.7s infinite;
-      }
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-      }
-      .skill-wraper {
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-        gap: 5px;
-        margin-top: 20px;
-      }
-      .skill {
-        min-width: 90px;
-        max-width: 100px;
-        justify-content: center;
-        text-align: center;
-        display: flex;
-        padding: 2px;
-        margin-top: 20px;
-        border: solid black 2px;
-      }
-      .skill-img {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.5s ease;
-        padding: 0px;
-      }
-      .skill:hover {
-        border: solid white 2px;
-      }
-      .skill-img:hover {
-        transform: scale(1.05);
-      }
-      .timeline {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      /* The actual timeline (the vertical ruler) */
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 6px;
-        background-color: black;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -3px;
-      }
-      /* Container around content */
-      .timeline-container {
-        padding: 10px 20px;
-        position: relative;
-        background-color: inherit;
-        width: 40%;
-      }
-
-      /* The circles on the timeline */
-      .timeline-container::after {
-        content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        right: -16.6%;
-        background-color: white;
-        border: 4px solid #ffd1dd;
-        top: 15px;
-        border-radius: 50%;
-        z-index: 1;
-      }
-
-      /* Place the container to the left */
-      .left {
-        left: 0%;
-      }
-
-      /* Place the container to the right */
-      .right {
-        left: 54.2%;
-      }
-
-      /* Add arrows to the left container (pointing right) */
-      .left::before {
-        content: " ";
-        height: 0;
-        position: absolute;
-        top: 22px;
-        width: 0;
-        z-index: 1;
-        right: 11px;
-        border: medium solid black;
-        border-width: 10px 0 10px 10px;
-        border-color: transparent transparent transparent black;
-      }
-
-      /* Add arrows to the right container (pointing left) */
-      .right::before {
-        content: " ";
-        height: 0;
-        position: absolute;
-        top: 22px;
-        width: 0;
-        z-index: 1;
-        left: 11px;
-        border: medium solid black;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent black transparent transparent;
-      }
-
-      /* Fix the circle for containers on the right side */
-      .right::after {
-        left: -13.5%;
-      }
-
-      /* The actual content */
-      .timeline-content {
-        padding: 20px 30px;
-        background-color: white;
-        border: 2px solid black;
-        position: relative;
-        border-radius: 6px;
-      }
-
-      .timeline-content:hover {
-        background-color: #ffd1dd;
-        border-color: white;
-      }
-
-      /* Media queries - Responsive timeline on screens less than 600px wide */
-      @media screen and (max-width: 1200px) {
-        /* Place the timelime to the left */
-        .timeline::after {
-          left: 31px;
-        }
-
-        /* Full-width containers */
-        .timeline-container {
-          width: auto;
-          padding-left: 70px;
-          padding-right: 25px;
-        }
-
-        /* Make sure that all arrows are pointing leftwards */
-        .timeline-container::before {
-          left: 60px;
-          border: medium solid black;
-          border-width: 10px 10px 10px 0;
-          border-color: transparent black transparent transparent;
-        }
-
-        /* Make sure all circles are at the same spot */
-        .left::after,
-        .right::after {
-          left: 16px;
-        }
-
-        /* Make all right containers behave like the left ones */
-        .right {
-          left: 0%;
-        }
-      }
-
-      /* Tooltip container */
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-
-      /* Tooltip text */
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 100px;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-
-        /* Position the tooltip text */
-        position: absolute;
-        z-index: 1;
-        bottom: 106%;
-        left: 50%;
-        margin-left: -60px;
-
-        /* Fade in tooltip */
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      /* Tooltip arrow */
-      .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-      }
-
-      /* Show the tooltip text when you mouse over the tooltip container */
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="hamburger-container">
-      <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
+    <div class="hamburger" id="hamburger">
         <div></div>
         <div></div>
         <div></div>
-      </div>
-    </div>
-    <div class="container" onclick="closeSidebar(event)">
-      <div class="leftbar" id="leftbar">
-        <div class="profile">
-          <img src="harish.webp" alt="Profile Picture" />
-          <h2 style="font-size: 28px">Harish Kumar</h2>
-        </div>
-        <a class="tab" href="#section1" style="font-size: 24px">About Me</a>
-        <a class="tab" href="#section2" style="font-size: 24px">Skills</a>
-        <a class="tab" href="#section3" style="font-size: 24px">Education</a>
-        <a class="tab" href="#section4" style="font-size: 24px">Experience</a>
-        <a class="tab" href="#section4" style="font-size: 24px">Projects</a>
-        <a class="tab" href="#section4" style="font-size: 24px">Contact Me</a>
-        <div
-          style="display: flex; justify-content: space-around; margin-top: 22vh"
-        >
-          <a style="padding: 0 !important;"
-            href="https://linkedin.com/in/harish-bisu-424512237"
-            target="_blank"
-            ><img
-              src="linkdin.png"
-              alt="linkdin"
-              style="width: 100%; max-width: 40px"
-          /></a>
-          <a style="padding: 0 !important;" href="https://leetcode.com/u/harishbisu/" target="_blank"
-            ><img
-              src="leetcode.png"
-              alt="lettcode"
-              style="width: 100%; max-width: 40px"
-          /></a>
-          <a style="padding: 0 !important;" href="https://blackbuck.blob.core.windows.net/blackbucks-media/Harish_Kumar_Resume.pdf-1749269350522" class="tooltip">
-            <span class="tooltiptext">Download Resume</span>
-            <img
-              src="resume.png"
-              alt="resume"
-              style="width: 100%; max-width: 40px"
-          /></a>
-        </div>
-      </div>
-      <div class="content">
-        <div class="section" id="section1">
-          <div class="laptop-container">
-            <img src="laptop.png" alt="laptop picture" />
-            <div class="laptop-content">
-              <h1><span id="typedText"></span><span class="cursor"></span></h1>
-              <h2 id="subText">Welcome to my portfolio!</h2>
-            </div>
-          </div>
-          <h2 style="font-size: 28px">About Me</h2>
-          <p style="font-size: 24px; text-align: justify">
-            I'm a passionate <b>Software Engineer</b>🤓 with a love for crafting
-            stunning visuals, writing clean and efficient code, and creating
-            memorable user experiences. I thrive on bringing ideas to life and
-            making them shine. 🚀
-          </p>
-        </div>
-        <div class="section" id="section2">
-          <h2 style="font-size: 28px">Skills</h2>
-          <div class="skill-wraper">
-            <div class="skill tooltip">
-              <span class="tooltiptext">Java Script</span>
-              <img src="javascript.svg" alt="javascript" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">C++</span>
-              <img src="c++.png" alt="c++" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">HTML</span>
-              <img src="html.png" alt="html" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">CSS</span>
-              <img src="css.svg" alt="css" class="skill-img" />
-            </div>
-            <div class="skill nestjs tooltip">
-              <span class="tooltiptext">Nest JS</span>
-              <img src="nestjs.svg" alt="nestjs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Node JS</span>
-              <img src="nodejs.png" alt="nodejs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Express JS</span>
-              <img src="express.png" alt="expressjs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Postgresql</span>
-              <img src="postgresql.png" alt="postgresql" class="skill-img" />
-            </div>
-            <div class="skill mikro-orm tooltip">
-              <span class="tooltiptext">Mikro-ORM</span>
-              <img src="mikro-orm.svg" alt="mikro-orm" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">React JS</span>
-              <img src="reactjs.svg" alt="reactjs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Lodash</span>
-              <img src="lodash.svg" alt="lodash" class="skill-img" />
-            </div>
-          </div>
-        </div>
-        <div class="section" id="section3">
-          <h2 style="font-size: 28px">Education</h2>
-          <div class="timeline">
-            <div class="timeline-container left">
-              <div class="timeline-content">
-                <h2>Bachelor of Technology 2024</h2>
-                <p>National Institute of Technology Patna<br />Cgpa: 8.01</p>
-              </div>
-            </div>
-            <div class="timeline-container right">
-              <div class="timeline-content">
-                <h2>Secondary</h2>
-                <p>
-                  Govt. S. S. School Tatanwa<br />
-                  Percentage: 86.40%
-                </p>
-              </div>
-            </div>
-            <div class="timeline-container left">
-              <div class="timeline-content">
-                <h2>Matriculation</h2>
-                <p>Shubhash V. M. Sewad Bari<br />Percentage: 94.17%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="section4">
-          <h2>Experience</h2>
-          <div class="timeline">
-            <div class="timeline-container left">
-              <div class="timeline-content">
-                <h2>CybermindWorks LLP</h2>
-                <p>Location: Chennai, TamilNaddu<br />Jan 2024 - June 2024</p>
-              </div>
-            </div>
-            <div class="timeline-container right">
-              <div class="timeline-content">
-                <h2>L.B. MicroTech</h2>
-                <p>
-                  Location: Jaipur, Rajasthatn<br />
-                  May 2023 - July 2023
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const text = " Hi! I'm Harish";
-        const speed = 100;
-        const typedTextSpan = document.getElementById("typedText");
-        let charIndex = 0;
-        const textLength = text.length;
-        typedTextSpan.textContent = "loading...";
-
-        function type() {
-          if (charIndex < textLength) {
-            if (charIndex == 0) typedTextSpan.textContent = "";
-            typedTextSpan.textContent += text.charAt(charIndex);
-            charIndex++;
-            setTimeout(type, speed);
-            if (charIndex === textLength) {
-              var subText = document.getElementById("subText");
-              setTimeout(function () {
-                subText.style.opacity = "1";
-              }, 500);
-            }
-          }
-        }
-
-        setTimeout(type, 1000);
-
-        const cursor = document.querySelector(".cursor");
-        setInterval(() => {
-          cursor.classList.toggle("hidden");
-        }, 700);
-      });
-
-      function toggleSidebar() {
-        var leftbar = document.getElementById("leftbar");
-        var hamburger = document.getElementById("hamburger");
-        leftbar.classList.toggle("active");
-        hamburger.classList.toggle("active");
-      }
-
-      function closeSidebar(event) {
-        var leftbar = document.getElementById("leftbar");
-        var hamburger = document.getElementById("hamburger");
-        if (
-          leftbar.classList.contains("active") &&
-          !leftbar.contains(event.target) &&
-          event.target !== hamburger &&
-          !hamburger.contains(event.target)
-        ) {
-          leftbar.classList.remove("active");
-          hamburger.classList.remove("active");
-        }
-      }
-
-      document.querySelectorAll(".leftbar .tab").forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document
-            .querySelectorAll(".leftbar .tab")
-            .forEach((a) => a.classList.remove("active"));
-          this.classList.add("active");
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-          document.getElementById("leftbar").classList.remove("active");
-          document.getElementById("hamburger").classList.remove("active");
-        });
-      });
-
-      window.addEventListener("click", function (e) {
-        var leftbar = document.getElementById("leftbar");
-        var hamburger = document.getElementById("hamburger");
-        if (
-          leftbar.classList.contains("active") &&
-          !leftbar.contains(e.target) &&
-          !hamburger.contains(e.target)
-        ) {
-          leftbar.classList.remove("active");
-          hamburger.classList.remove("active");
-        }
-      });
-    </script>
-  </body>
-</html>
- -->
- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio: Harish Kumar</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        font-family: "Roboto", "sans-serif";
-      }
-      .container {
-        display: flex;
-      }
-      .leftbar {
-        width: 250px;
-        background-color: #333;
-        color: #fff;
-        height: 100dvh !important;
-        position: fixed;
-        overflow: auto;
-        transition: transform 0.3s ease-in-out;
-        z-index: 1001;
-      }
-      .leftbar .profile {
-        padding: 20px;
-        text-align: center;
-        border-bottom: 2px solid;
-      }
-      .leftbar .profile img {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        border: 2px solid;
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
-      }
-      .leftbar .profile img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 10px #575757;
-      }
-      .leftbar a {
-        display: block;
-        color: #fff;
-        padding: 15px;
-        text-decoration: none;
-        border-left: 3px solid transparent;
-      }
-      .leftbar a.active {
-        border-left: 3px solid #ffd1dd;
-      }
-      .leftbar .tab:hover {
-        background-color: #ffd1dd;
-        color: black;
-      }
-      .content {
-        margin-left: 250px;
-        padding: 20px;
-        width: calc(100% - 250px);
-        transition: margin-left 0.3s ease-in-out;
-      }
-      .section {
-        padding: 50px 0;
-        border-bottom: 1px solid #ccc;
-      }
-      .hamburger {
-        display: none;
-        cursor: pointer;
-        padding: 15px;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        z-index: 1002;
-        transition: left 0.3s ease-in-out;
-      }
-      .hamburger div {
-        width: 30px;
-        height: 4px;
-        background-color: #333;
-        margin: 5px 0;
-        transition: all 0.3s ease;
-      }
-      .hamburger.active div:nth-child(1) {
-        transform: rotate(45deg) translate(0px, 12.2px);
-      }
-      .hamburger.active div:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(0px, -12.2px);
-      }
-      .laptop-container {
-        min-height: 300px;
-        position: relative;
-        text-align: center;
-        color: rgb(0, 0, 0);
-      }
-
-      .laptop-container img {
-        width: 50%;
-        max-width: 500px;
-        height: auto;
-      }
-
-      .laptop-content {
-        position: absolute;
-        top: 18%;
-        left: 50%;
-        transform: translate(-50%, 5%);
-        width: 100%;
-        border-radius: 10px;
-      }
-
-      .laptop-content h1,
-      h2 {
-        margin: 0;
-      }
-
-      .laptop-content h1 {
-        font-size: 2em;
-      }
-
-      .laptop-content h2 {
-        font-size: 1.5em;
-      }
-
-      @media (max-width: 1200px) {
-        .laptop-container img {
-          width: 100%;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .laptop-content h1 {
-          font-size: 1.5em;
-        }
-        .laptop-content h2 {
-          font-size: 1em;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .leftbar {
-          width: 250px;
-          transform: translateX(-251px);
-        }
-        .leftbar.active {
-          transform: translateX(0);
-        }
-        .content {
-          margin-left: 0;
-          width: 100%;
-        }
-        .hamburger {
-          display: block;
-          /* width: 100%; */
-          background: white;
-          top: auto;
-        }
-        .hamburger.active {
-          left: 250px;
-        }
-        .hamburger-container {
-          position: fixed;
-          width: 100%;
-          height: 62px;
-          background: white;
-          top: auto;
-          z-index: 1000;
-        }
-      }
-      #subText {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-      }
-      .cursor {
-        display: inline-block;
-        width: 4px;
-        height: 30px;
-        margin-bottom: -5px;
-        background-color: #333;
-        animation: blink 0.7s infinite;
-      }
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-      }
-      .skill-wraper {
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-        gap: 5px;
-        margin-top: 20px;
-      }
-      .skill {
-        min-width: 90px;
-        max-width: 100px;
-        justify-content: center;
-        text-align: center;
-        display: flex;
-        padding: 2px;
-        margin-top: 20px;
-        border: solid black 2px;
-      }
-      .skill-img {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.5s ease;
-        padding: 0px;
-      }
-      .skill:hover {
-        border: solid white 2px;
-      }
-      .skill-img:hover {
-        transform: scale(1.05);
-      }
-      .timeline {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      /* The actual timeline (the vertical ruler) */
-      .timeline::after {
-        content: "";
-        position: absolute;
-        width: 6px;
-        background-color: black;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -3px;
-      }
-      /* Container around content */
-      .timeline-container {
-        padding: 10px 20px;
-        position: relative;
-        background-color: inherit;
-        width: 40%;
-      }
-
-      /* The circles on the timeline */
-      .timeline-container::after {
-        content: "";
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        right: -16.6%;
-        background-color: white;
-        border: 4px solid #ffd1dd;
-        top: 15px;
-        border-radius: 50%;
-        z-index: 1;
-      }
-
-      /* Place the container to the left */
-      .left {
-        left: 0%;
-      }
-
-      /* Place the container to the right */
-      .right {
-        left: 54.2%;
-      }
-
-      /* Add arrows to the left container (pointing right) */
-      .left::before {
-        content: " ";
-        height: 0;
-        position: absolute;
-        top: 22px;
-        width: 0;
-        z-index: 1;
-        right: 11px;
-        border: medium solid black;
-        border-width: 10px 0 10px 10px;
-        border-color: transparent transparent transparent black;
-      }
-
-      /* Add arrows to the right container (pointing left) */
-      .right::before {
-        content: " ";
-        height: 0;
-        position: absolute;
-        top: 22px;
-        width: 0;
-        z-index: 1;
-        left: 11px;
-        border: medium solid black;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent black transparent transparent;
-      }
-
-      /* Fix the circle for containers on the right side */
-      .right::after {
-        left: -13.5%;
-      }
-
-      /* The actual content */
-      .timeline-content {
-        padding: 20px 30px;
-        background-color: white;
-        border: 2px solid black;
-        position: relative;
-        border-radius: 6px;
-        transition: background-color 0.5s ease;
-      }
-
-      .timeline-content:hover {
-        background-color: #ffd1dd;
-        border-color: #ffd1dd;
-      }
-
-      /* .timeline-content.right:hover::before {
-        border: medium solid #ffd1dd;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent #ffd1dd transparent transparent;
-      } */
-
-      /* Media queries - Responsive timeline on screens less than 600px wide */
-      @media screen and (max-width: 1200px) {
-        /* Place the timelime to the left */
-        .timeline::after {
-          left: 31px;
-        }
-
-        /* Full-width containers */
-        .timeline-container {
-          width: auto;
-          padding-left: 70px;
-          padding-right: 25px;
-        }
-
-        /* Make sure that all arrows are pointing leftwards */
-        .timeline-container::before {
-          left: 60px;
-          border: medium solid black;
-          border-width: 10px 10px 10px 0;
-          border-color: transparent black transparent transparent;
-        }
-
-        /* Make sure all circles are at the same spot */
-        .left::after,
-        .right::after {
-          left: 16px;
-        }
-
-        /* Make all right containers behave like the left ones */
-        .right {
-          left: 0%;
-        }
-      }
-
-      /* Tooltip container */
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-
-      /* Tooltip text */
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 100px;
-        background-color: #ffd1dd;
-        color: black;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-
-        /* Position the tooltip text */
-        position: absolute;
-        z-index: 1;
-        bottom: 106%;
-        left: 50%;
-        margin-left: -60px;
-
-        /* Fade in tooltip */
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      /* Tooltip arrow */
-      .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #ffd1dd transparent transparent transparent;
-      }
-
-      /* Show the tooltip text when you mouse over the tooltip container */
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-
-      .project-wrap {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 2px;
-        justify-content: space-around;
-      }
-
-      .project {
-        min-width: 300px;
-        min-height: 350px;
-        margin-top: 20px;
-        border: 2px solid black;
-      }
-      .project:hover .flip-content {
-        opacity: 0 !important;
-        z-index: 1 !important;
-      }
-
-      .project:hover .project-content {
-        background-color: #ffd1dd;
-        z-index: 2 !important;
-        opacity: 1 !important;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="hamburger-container">
-      <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-    <div class="container" onclick="closeSidebar(event)">
-      <div class="leftbar" id="leftbar">
-        <div class="profile">
-          <img src="harish.webp" alt="Profile Picture" />
-          <h2 style="font-size: 28px">Harish Kumar</h2>
-        </div>
-        <a class="tab" href="#section1" style="font-size: 24px">About Me</a>
-        <a class="tab" href="#section2" style="font-size: 24px">Skills</a>
-        <a class="tab" href="#section3" style="font-size: 24px">Education</a>
-        <a class="tab" href="#section4" style="font-size: 24px">Experience</a>
-        <a class="tab" href="#section5" style="font-size: 24px">Projects</a>
-        <a class="tab" href="#section6" style="font-size: 24px">Contact Me</a>
-        <div
-          style="
-            display: flex;
-            justify-content: space-around;
-            margin-top: 22dvh;
-          "
-        >
-          <a
-            style="padding: 0 !important"
-            href="https://linkedin.com/in/harish-bisu-424512237"
-            target="_blank"
-            ><img
-              src="linkdin.png"
-              alt="linkdin"
-              style="width: 100%; max-width: 40px"
-          /></a>
-          <a
-            style="padding: 0 !important"
-            href="https://leetcode.com/u/harishbisu/"
-            target="_blank"
-            ><img
-              src="leetcode.png"
-              alt="lettcode"
-              style="width: 100%; max-width: 40px"
-          /></a>
-          <a
-            style="padding: 0 !important"
-            href="https://blackbuck.blob.core.windows.net/blackbucks-media/Harish_Kumar_Resume.pdf-1749269350522"
-            class="tooltip"
-          >
-            <span class="tooltiptext">Download Resume</span>
-            <img
-              src="resume.png"
-              alt="resume"
-              style="width: 100%; max-width: 40px"
-          /></a>
-        </div>
-      </div>
-      <div class="content">
-        <div class="section" id="section1">
-          <div class="laptop-container">
-            <img src="laptop.png" alt="laptop picture" />
-            <div class="laptop-content">
-              <h1><span id="typedText"></span><span class="cursor"></span></h1>
-              <h2 id="subText">Welcome to my portfolio!</h2>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="profile-section">
+                <img src="harish.webp" alt="Harish Kumar" class="profile-img">
+                <h1 class="profile-name">Harish Kumar</h1>
             </div>
-          </div>
-          <h2 style="font-size: 28px">About Me</h2>
-          <p style="font-size: 24px; text-align: justify">
-            I'm a passionate <b>Software Engineer</b>🤓 with a love for crafting
-            stunning visuals, writing clean and efficient code, and creating
-            memorable user experiences. I thrive on bringing ideas to life and
-            making them shine. 🚀
-          </p>
-        </div>
-        <div class="section" id="section2">
-          <h2 style="font-size: 28px">Skills</h2>
-          <div class="skill-wraper">
-            <div class="skill tooltip">
-              <span class="tooltiptext">Java Script</span>
-              <img src="javascript.svg" alt="javascript" class="skill-img" />
+
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="social-links">
+                <a href="https://linkedin.com/in/harish-bisu-424512237" target="_blank" class="social-icon">
+                    <img src="linkdin.png" alt="LinkedIn">
+                </a>
+                <a href="https://leetcode.com/u/harishbisu/" target="_blank" class="social-icon">
+                    <img src="leetcode.png" alt="LeetCode">
+                </a>
+                <a href="https://blackbuck.blob.core.windows.net/blackbucks-media/Harish_Kumar_Resume.pdf-1749269350522"
+                    target="_blank" class="social-icon">
+                    <img src="resume.png" alt="Resume">
+                </a>
             </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">C++</span>
-              <img src="c++.png" alt="c++" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">HTML</span>
-              <img src="html.png" alt="html" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">CSS</span>
-              <img src="css.svg" alt="css" class="skill-img" />
-            </div>
-            <div class="skill nestjs tooltip">
-              <span class="tooltiptext">Nest JS</span>
-              <img src="nestjs.svg" alt="nestjs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Node JS</span>
-              <img src="nodejs.png" alt="nodejs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Express JS</span>
-              <img src="express.png" alt="expressjs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Postgresql</span>
-              <img src="postgresql.png" alt="postgresql" class="skill-img" />
-            </div>
-            <div class="skill mikro-orm tooltip">
-              <span class="tooltiptext">Mikro-ORM</span>
-              <img src="mikro-orm.svg" alt="mikro-orm" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">React JS</span>
-              <img src="reactjs.svg" alt="reactjs" class="skill-img" />
-            </div>
-            <div class="skill tooltip">
-              <span class="tooltiptext">Lodash</span>
-              <img src="lodash.svg" alt="lodash" class="skill-img" />
-            </div>
-          </div>
-        </div>
-        <div class="section" id="section3">
-          <h2 style="font-size: 28px">Education</h2>
-          <div class="timeline">
-            <div class="timeline-container left">
-              <div class="timeline-content">
-                <h2>Bachelor of Technology 2024</h2>
-                <p>National Institute of Technology Patna<br />Cgpa: 8.01</p>
-              </div>
-            </div>
-            <div class="timeline-container right">
-              <div class="timeline-content">
-                <h2>Secondary</h2>
-                <p>
-                  Govt. S. S. School Tatanwa<br />
-                  Percentage: 86.40%
-                </p>
-              </div>
-            </div>
-            <div class="timeline-container left">
-              <div class="timeline-content">
-                <h2>Matriculation</h2>
-                <p>Shubhash V. M. Sewad Bari<br />Percentage: 94.17%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="section4">
-          <h2 style="font-size: 28px">Experience</h2>
-          <div class="timeline">
-            <div class="timeline-container left">
-              <div class="timeline-content">
-                <h2>CybermindWorks LLP</h2>
-                <p>Location: Chennai, TamilNaddu<br />Jan 2024 - June 2024</p>
-              </div>
-            </div>
-            <div class="timeline-container right">
-              <div class="timeline-content">
-                <h2>L.B. MicroTech</h2>
-                <p>
-                  Location: Jaipur, Rajasthatn<br />
-                  May 2023 - July 2023
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="section5">
-          <h2 style="font-size: 28px">Projects</h2>
-          <div class="project-wrap" style="position: relative">
-            <div class="project" style="position: relative; overflow: hidden">
-              <div
-                class="project-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  z-index: 1;
-                  opacity: 0;
-                  justify-content: center;
-                  text-align: center;
-                  transition: background-color 0.3s linear;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Hotel Reservation Sytem
-                </h1>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Technology:</b> NodeJs, ReactJs, MongoDB,
-                  ExpressJS,BootStrap
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Features:</b> Filters, Profile, Admin Pannel, Payment
-                  Gateway, User Ratings
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Security:</b> Routes are secured with JWT
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Deployed URL:</b>
-                  <a
-                    href="http://hotel-web-bisu.onrender.com/home"
-                    target="_blank"
-                    >Live on Render</a
-                  >
-                </p>
-              </div>
-              <div
-                class="flip-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  transition: opacity 0.3s linear;
-                  opacity: 1;
-                  z-index: 2;
-                  justify-content: center;
-                  text-align: center;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Hotel Reservation Sytem
-                </h1>
-                <img
-                  src="https://blackbuck.blob.core.windows.net/blackbucks-media/Screenshot%202024-10-04%20122536-1728024981160.png"
-                  width="100%"
-                />
-              </div>
-            </div>
-            <div class="project" style="position: relative; overflow: hidden">
-              <div
-                class="project-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  z-index: 1;
-                  opacity: 0;
-                  justify-content: center;
-                  text-align: center;
-                  transition: opacity 0.3s linear;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Brain Tumor Detection
-                </h1>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Technology:</b> VGG-16, ResNet-50, Custom model with 3
-                  layers
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Features:</b> Detects the tumor with help of mri scans of
-                  brain.
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Accuracy:</b> Arount 98%
-                </p>
-              </div>
-              <div
-                class="flip-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  transition: opacity 0.3s linear;
-                  z-index: 2;
-                  justify-content: center;
-                  text-align: center;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Brain Tumor Detection
-                </h1>
-                <img
-                  src="https://assets.onecompiler.app/42hn49nvx/42u6fbpea/Screenshot%202024-10-05%20083416.png"
-                  width="100%"
-                />
-              </div>
-            </div>
-            <div class="project" style="position: relative; overflow: hidden">
-              <div
-                class="project-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  z-index: 1;
-                  opacity: 0;
-                  justify-content: center;
-                  text-align: center;
-                  transition: opacity 0.3s linear;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Fire Safty System with Email
-                </h1>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Components:</b> Esp32, Arduino, Buzzer, LED, BreadBoard
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Features:</b> Detects Fire and Smoke, Start alarm and sends
-                  an email
-                </p>
-              </div>
-              <div
-                class="flip-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  transition: opacity 0.3s linear;
-                  z-index: 2;
-                  justify-content: center;
-                  text-align: center;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Fire Safty System with Email
-                </h1>
-                <img
-                  src="https://assets.onecompiler.app/42hn49nvx/42u6fbpea/Screenshot%202024-10-05%20082613.png"
-                  width="100%"
-                />
-              </div>
-            </div>
-            <div class="project" style="position: relative; overflow: hidden">
-              <div
-                class="project-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  z-index: 1;
-                  opacity: 0;
-                  justify-content: center;
-                  text-align: center;
-                  transition: opacity 0.3s linear;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Vehicle Hit: Long Ride
-                </h1>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Technology:</b> Html, CSS, ThreJS
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Features:</b> Multiple Vehicles, Collision Detection,
-                  Continous difficulty level increament.
-                </p>
-                <p style="text-align: left; padding-left: 2px">
-                  <b>Deployed URL:</b>
-                  <a
-                    href="http://hotel-web-bisu.onrender.com/home"
-                    target="_blank"
-                    >Github</a
-                  >
-                </p>
-              </div>
-              <div
-                class="flip-content"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  position: absolute;
-                  transition: opacity 0.3s linear;
-                  z-index: 2;
-                  justify-content: center;
-                  text-align: center;
-                "
-              >
-                <h1 style="border-bottom: 1px solid #ccc">
-                  Vehicle Hit: Long Ride
-                </h1>
-                <img
-                  src="https://assets.onecompiler.app/42hn49nvx/42u6fbpea/Screenshot%202024-10-05%20081341.png"
-                  width="100%"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="section" id="section6">
-          <h2 style="font-size: 28px">Contact Me</h2>
-          <h3>Mobile No:- +91-7023727101</h3>
-          <h3>
-            Github:-
-            <a href="https://github.com/harishbisu" target="_blank"
-              >harishbisu</a
-            >
-          </h3>
-          <h3>
-            Email:-
-            <a href="mailto:harishbisu94@gmail.com">harishbisu94@gmail.com</a>
-          </h3>
-          <h3>Address:- Rajasthan, India</h3>
-        </div>
-      </div>
+        </aside>
+
+        <main class="main-content">
+
+            <section id="home">
+                <div class="hero-img-container">
+                    <img src="laptop.png" alt="Workspace">
+                    <div class="hero-content">
+                        <h1>Hi, I'm <span class="typed-text" id="typed-text"></span><span class="cursor">&nbsp;</span>
+                        </h1>
+                        <h2 id="sub-text"
+                            style="opacity: 0; transition: all 1s ease; transform: translateY(20px); font-size: 1.2rem; margin-top: 10px; color: #333;">
+                            Building Digital Experiences</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-text">
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                        Hello! I'm <b>Harish Kumar</b>, a passionate Software Engineer who bridges the gap between
+                        functional code and beautiful design. With a strong foundation in modern web technologies, I
+                        don't just build websites; I create digital experiences that are fast, accessible, and visually
+                        stunning.
+                    </p>
+                    <p style="font-size: 1.2rem;">
+                        My journey involves solving complex problems with efficient algorithms and translating creative
+                        ideas into interactive realities. Whether it's optimizing backend performance or perfecting a
+                        frontend animation, I thrive on the details that make a product truly shine.
+                    </p>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <img src="javascript.svg" alt="JavaScript">
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="c++.png" alt="C++">
+                        <span class="skill-name">C++</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="html.png" alt="HTML">
+                        <span class="skill-name">HTML</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="css.svg" alt="CSS">
+                        <span class="skill-name">CSS</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="nestjs.svg" alt="NestJS">
+                        <span class="skill-name">NestJS</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="nodejs.png" alt="Node.js">
+                        <span class="skill-name">Node.js</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="express.png" alt="Express.js">
+                        <span class="skill-name">Express.js</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="postgresql.png" alt="PostgreSQL">
+                        <span class="skill-name">PostgreSQL</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="mikro-orm.svg" alt="Mikro-ORM">
+                        <span class="skill-name">Mikro-ORM</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="reactjs.svg" alt="React">
+                        <span class="skill-name">React</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="lodash.svg" alt="Lodash">
+                        <span class="skill-name">Lodash</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2 class="section-title">Experience & Education</h2>
+
+                <h3 style="margin-bottom: 2rem; color: var(--text-secondary);">Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>CybermindWorks LLP</h3>
+                            <p>Chennai, Tamil Nadu</p>
+                            <small>Jan 2024 - June 2024</small>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>L.B. MicroTech</h3>
+                            <p>Jaipur, Rajasthan</p>
+                            <small>May 2023 - July 2023</small>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 3rem 0 2rem; color: var(--text-secondary);">Education</h3>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>B.Tech (2024)</h3>
+                            <p>National Institute of Technology Patna</p>
+                            <small>CGPA: 8.01</small>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>Secondary</h3>
+                            <p>Govt. S. S. School Tatanwa</p>
+                            <small>Percentage: 86.40</small>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>Matriculation</h3>
+                            <p>Shubhash V. M. Sewad Bari</p>
+                            <small>Percentage: 94.17</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="2project.png" alt="Goverment Job Portal">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Goverment Job Posting Portal</h3>
+                            <p class="project-tags">Nextjs, ChakraUI, SSR, ISR, SEO</p>
+                            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Custom Blog Editor, Pagination, Google
+                                Ads</p>
+                            <a href="http://www.rajasthanrecruitment.in" target="_blank" class="project-link">Live
+                                Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="project3.png" alt="Vehicle Hit Game">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Vehicle Hit: Long Ride</h3>
+                            <p class="project-tags">HTML, CSS, ThreeJS</p>
+                            <p style="margin-bottom: 1rem; font-size: 0.9rem;">3D game with collision detection and
+                                scoring.</p>
+                            <a href="https://harishbisu.github.io/Graphics/" target="_blank" class="project-link">Live
+                                Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="https://blackbuck.blob.core.windows.net/blackbucks-media/Screenshot%202024-10-04%20122536-1728024981160.png"
+                                alt="Hotel Reservation System">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Hotel Reservation System</h3>
+                            <p class="project-tags">NodeJs, ReactJs, MongoDB, ExpressJS</p>
+                            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Filters, Profile, Admin Panel, Payment
+                                Gateway.</p>
+                            <a href="http://hotel-web-bisu.onrender.com/home" target="_blank" class="project-link">Live
+                                Demo</a>
+                        </div>
+                    </div>
+
+
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="ITSM.png" alt="ITSM System">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">ITSM System</h3>
+                            <p class="project-tags">NestJs, ReactJs, Postgresql, Auth </p>
+                            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Filters, Multi Level Approvals, Admin
+                                Panel, Auto Assignment
+                                Gateway.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="https://uploads.onecompiler.io/42hn49nvx/42u6fbpea/Screenshot%202024-10-05%20083416.png"
+                                alt="Brain Tumor Detection">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Brain Tumor Detection</h3>
+                            <p class="project-tags">Python, VGG-16, ResNet-50</p>
+                            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Detects tumor from MRI scans with 98%
+                                accuracy.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="https://uploads.onecompiler.io/42hn49nvx/42u6fbpea/Screenshot%202024-10-05%20082613.png"
+                                alt="Fire Safety System">
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Fire Safety System</h3>
+                            <p class="project-tags">IoT, ESP32, Arduino</p>
+                            <p style="margin-bottom: 1rem; font-size: 0.9rem;">Detects fire/smoke and sends email
+                                alerts.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2 class="section-title">Contact Me</h2>
+                <div class="contact-container">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p><a href="mailto:harishbisu94@gmail.com"
+                                style="color: var(--accent-color); text-decoration: none;">harishbisu94@gmail.com</a>
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <p>+91-7023727101</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>Rajasthan, India</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const text = " Hi! I'm Harish";
-        const speed = 100;
-        const typedTextSpan = document.getElementById("typedText");
-        let charIndex = 0;
-        const textLength = text.length;
-        typedTextSpan.textContent = "loading...";
+    <script src="script.js"></script>
+</body>
 
-        function type() {
-          if (charIndex < textLength) {
-            if (charIndex == 0) typedTextSpan.textContent = "";
-            typedTextSpan.textContent += text.charAt(charIndex);
-            charIndex++;
-            setTimeout(type, speed);
-            if (charIndex === textLength) {
-              var subText = document.getElementById("subText");
-              setTimeout(function () {
-                subText.style.opacity = "1";
-              }, 500);
-            }
-          }
-        }
-
-        setTimeout(type, 1000);
-
-        const cursor = document.querySelector(".cursor");
-        setInterval(() => {
-          cursor.classList.toggle("hidden");
-        }, 700);
-      });
-
-      function toggleSidebar() {
-        var leftbar = document.getElementById("leftbar");
-        var hamburger = document.getElementById("hamburger");
-        leftbar.classList.toggle("active");
-        hamburger.classList.toggle("active");
-      }
-
-      function closeSidebar(event) {
-        var leftbar = document.getElementById("leftbar");
-        var hamburger = document.getElementById("hamburger");
-        if (
-          leftbar.classList.contains("active") &&
-          !leftbar.contains(event.target) &&
-          event.target !== hamburger &&
-          !hamburger.contains(event.target)
-        ) {
-          leftbar.classList.remove("active");
-          hamburger.classList.remove("active");
-        }
-      }
-
-      document.querySelectorAll(".leftbar .tab").forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document
-            .querySelectorAll(".leftbar .tab")
-            .forEach((a) => a.classList.remove("active"));
-          this.classList.add("active");
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-          document.getElementById("leftbar").classList.remove("active");
-          document.getElementById("hamburger").classList.remove("active");
-        });
-      });
-
-      window.addEventListener("click", function (e) {
-        var leftbar = document.getElementById("leftbar");
-        var hamburger = document.getElementById("hamburger");
-        if (
-          leftbar.classList.contains("active") &&
-          !leftbar.contains(e.target) &&
-          !hamburger.contains(e.target)
-        ) {
-          leftbar.classList.remove("active");
-          hamburger.classList.remove("active");
-        }
-      });
-    </script>
-  </body>
 </html>
